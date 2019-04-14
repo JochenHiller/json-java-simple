@@ -6,7 +6,7 @@ Simple JSON parser and writer implementation in just one class.
 
 This project aims to provide a most simple Json parser and writer in one single class. It is intended to be used by copying it into your target Java package and NOT to be used as a library. This helps to avoid dependencies on some JSON implementation sharing over your Java installation. If you don't care, please use the `org.json` package from https://github.com/stleary/JSON-java instead.
 
-This implementation has been design to have as lowest footprint as possible providing a stable and comfortable parser.
+This implementation has been design to have as lowest footprint as possible providing a stable and comfortable parser. The current size of JAR file containing byte code of this one single class is about 32 kB.
 
 The implementation is baded on org.json Java parser. This is well designed, good APIs and essentially consists of 4 public classes only:
 * `JSONObject`
