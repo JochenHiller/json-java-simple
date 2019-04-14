@@ -1,5 +1,7 @@
 # json-java-simple
 
+[![Build Status](https://travis-ci.org/JochenHiller/json-java-simple.svg?branch=master)](https://travis-ci.org/JochenHiller/json-java-simple)
+
 Simple JSON parser and writer implementation in just one class.
 
 ## Overview
