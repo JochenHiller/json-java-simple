@@ -8,10 +8,10 @@ public class JsonWriterTest {
 
 	@Test
 	public void testWrite() {
-		JSONObject json = Json.Parser.parse("{\"a\":\"A\", \"b\": \"B\"}");
-		String s = Json.Writer.write(json);
+		JSONObject jsonObject = Json.Parser.parse("{\"a\":\"A\", \"b\": \"B\"}");
+		String jsonString = Json.Writer.write(jsonObject);
 		// no guarantee about ordering, might fail
-		Assert.assertEquals("{\"a\":\"A\",\"b\":\"B\"}", s);
+		Assert.assertEquals("{\"a\":\"A\",\"b\":\"B\"}", jsonString);
 	}
 
 }

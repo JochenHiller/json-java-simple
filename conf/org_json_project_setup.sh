@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Will create a project org.json with latest versions to be used in an IDE
+# run with: ./conf/org_json_project_setup.sh
+
+
 DEST_DIR=../org.json
 
 echo "Setup project org.json in $DEST_DIR"

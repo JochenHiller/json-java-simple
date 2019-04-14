@@ -10,17 +10,17 @@ This project aims to provide a most simple Json parser and writer in one single 
 
 This implementation has been design to have as lowest footprint as possible providing a stable and comfortable parser. The current size of JAR file containing byte code of this one single class is about 32 kB.
 
-The implementation is baded on org.json Java parser. This is well designed, good APIs and essentially consists of 4 public classes only:
+The implementation is based on `org.json` JSON parser. This provides well designed, good APIs and essentially consists of 4 public classes only:
 * `JSONObject`
 * `JSONArray`
 * `JSONString`
 * `JSONException`
 
-To make it easy to copy this parser, a tiny wrapper class has been provided, which encapsulates all needed classes as inner classes. Internal classes (JSONTokenizer) is hidden behind an internal inner class.
+To make it easy to copy this parser, a tiny wrapper class will be provided, which encapsulates all needed classes as inner classes. Internal classes (`JSONTokenizer`) is hidden behind an internal inner class.
 
-The `org.json` test project has also been adapted to run the original tests against this tiny parser as well. So tect coverage is the same like original implementation.
+The `org.json` test project (see https://github.com/stleary/JSON-Java-unit-test) has also been adapted to run the original tests against this tiny parser as well. So the test coverage is the same like the original implementation.
 
-You can *NOT* get this package via Maven Central, as it is intended to be used by copying it as source code into your application. If you want to get a library for JSON, consider to use `org.json` original implementation instead.
+You can *NOT* get this package via Maven Central, as it is intended to be used by copying it as source code into your application. Simple copy Json.java in your projecz and adapt the package name, thats all. If you want to get a library for JSON, consider to use `org.json` original implementation instead.
 
 ## Limitations
 
@@ -41,17 +41,20 @@ These parts of `org.json` implementation have been removed due to smaller footpr
 * `XMLParserConfiguration.java`
 * `XMLTokener.java`
 
-So this simple implementation does not contain Cookie, HTTP, Property, XML support.
+So this simple implementation does *NOT* contain Cookie, HTTP, Property, XML support.
 
-The use of JSONPointer to make query into a JSON document has been replaced by a simple `query` implementation. The only limitation that it does not support cross-references inside a document.
+The use of JSONPointer to make query into a JSON document has been replaced by a vwery very simple `query` implementation. It only contains a subset of the IETF Spec 6901 (https://tools.ietf.org/html/rfc6901). See code below how to use for JSON object and arrays.
 
-The tests using and testing these classes have been removed as well or by commenting out a test case or parts with `// REMOVED FROM TEST CASE`.
+The tests using and testing these classes have been removed as well or by commenting out a test case or parts with
+
+```
+// REMOVED FROM TEST CASE
+```
+.
 
 ## How to use
 
-You can start a JSON parser by `Json.Parser.parse(jsonString)`, e.g.
-
-Assume folling JSON structure:
+You can parse a JSON structure by `Json.Parser.parse(jsonString)`. Assume following JSON structure:
 
 ```json
 {
@@ -67,10 +70,10 @@ Assume folling JSON structure:
 }
 ```
 
-You can access via JSONObject and JSONArray that way:
+You can access the document via `JSONObject` and `JSONArray` that way:
 
 ```java
-String jsonString = ...; // read somehow json from file above
+String jsonString = ...; // read somehow json
 JSONObject jsonObject = Json.Parser.parse(jsonString);
 String a = jsonObject.getString("a");
 JSONArray array01 = jsonObject.getJSONArray("array01");
@@ -84,7 +87,7 @@ Double d2 = array02.getJSONObject(1).getDouble("d2");
 You can access via `query()` methods as well:
 
 ```java
-String jsonString = ...; // read somehow json from file above
+String jsonString = ...; // read somehow json
 JSONObject jsonObject = Json.Parser.parse(jsonString);
 String a = (String) jsonObject.query("/a");
 JSONArray array01 = jsonObject.getJSONArray("array01");
@@ -94,7 +97,17 @@ Double d1 = (Double) jsonObject.query("/array02/0/d1");
 Double d2 = (Double) jsonObject.query("/array02/1/d2");
 ```
 
-Note: `query()` will throw JSONExceptions in case there are missing elements. You can also use `optQuery()` instead which will return `null` if an element is missing. This simplifies error handling.
+Note: `query()` will throw `JSONException`s in case there are missing elements. You can also use `optQuery()` instead which will return `null` if an element is missing. This simplifies error handling.
+
+
+You can write a JSON structure to a String by `Json.Writer.write(jsonObject)`:
+
+```java
+JSONObject jsonObject = ...; // create JSON structure
+String jsonString = Json.Writer.write(jsonObject );
+```
+
+
 
 For more documentation read also https://github.com/stleary/JSON-java, or https://www.baeldung.com/java-org-json.
 
@@ -104,10 +117,6 @@ If you are already using `org.json` implementation, it is enough to change your 
 E.g. the whole test suite has been adapted that way by re-organizing imports from `org.json.*` to `org.jochenhiller.json.simple.Json.*`.
 
 If you are using more advanced feature which are not supported here, you have to remove these parts, or add it from original implementation to your copy.
-
-## Get if from Maven Central
-
-
 
 ## References
 
