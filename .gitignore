@@ -1,0 +1,6 @@
+# ignore
+.gradle/5.*
+.gradle/build*
+.gradle/vcs*
+bin
+build

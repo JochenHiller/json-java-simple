@@ -1,0 +1,17 @@
+{
+  "prop1" : "PROP1",
+  "prop2" : "PROP2",
+  "prop3" : "PROP3",
+  "prop10" : {
+    "prop11": "PROP11",
+    "prop12": "PROP12"
+  }, 
+  "prop20" : {
+    "prop21": "PROP21",
+    "prop22": "PROP22"
+  },
+  "prop30" : [
+    { "prop31" : "PROP31" },
+    { "prop32" : "PROP32" }
+  ]
+}

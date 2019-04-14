@@ -1,0 +1,35 @@
+plugins {
+    id 'java-library'
+    id 'eclipse'
+	id 'jacoco'
+}
+
+tasks.withType(JavaCompile) { 
+     options.encoding = 'UTF-8' 
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+	// all deps from org.json test project
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'com.jayway.jsonpath:json-path:2.4.0'
+    testImplementation 'org.mockito:mockito-all:1.9.5'
+}
+
+test {
+  include "org/jochenhiller/json/simple/AllTestSuite.class"
+  finalizedBy jacocoTestReport
+}
+
+jacocoTestReport{
+    additionalSourceDirs = files(sourceSets.main.allJava.srcDirs)
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/reports/jacoco/html")
+    }
+    executionData = files('build/jacoco/test.exec')
+}
