@@ -6,7 +6,7 @@ Simple JSON parser and writer implementation in just one class.
 
 ## Overview
 
-This project aims to provide a most simple Json parser and writer in one single class. It is intended to be used by copying it into your target Java package and NOT to be used as a library. This helps to avoid dependencies on some JSON implementation sharing over your Java installation. If you don't care, please use the `org.json` package from https://github.com/stleary/JSON-java instead.
+This project aims to provide a most simple JSON parser and writer in one single class. It is intended to be used by copying it into your target Java package and NOT to be used as a library. This helps to avoid dependencies on some JSON implementation sharing over your Java installation. If you don't care, please use the `org.json` package from https://github.com/stleary/JSON-java instead.
 
 This implementation has been design to have as lowest footprint as possible providing a stable and comfortable parser. The current size of JAR file containing byte code of this one single class is about 32 kB.
 
@@ -20,7 +20,7 @@ To make it easy to copy this parser, a tiny wrapper class will be provided, whic
 
 The `org.json` test project (see https://github.com/stleary/JSON-Java-unit-test) has also been adapted to run the original tests against this tiny parser as well. So the test coverage is the same like the original implementation.
 
-You can *NOT* get this package via Maven Central, as it is intended to be used by copying it as source code into your application. Simple copy Json.java in your projecz and adapt the package name, thats all. If you want to get a library for JSON, consider to use `org.json` original implementation instead.
+You can *NOT* get this package via Maven Central, as it is intended to be used by copying it as source code into your application. Simple copy `Json.java` in your projecz and adapt the package name, thats all. If you want to get a library for JSON, consider to use `org.json` original implementation instead.
 
 ## Limitations
 
@@ -120,5 +120,12 @@ If you are using more advanced feature which are not supported here, you have to
 
 ## References
 
-* org.json implementation: https://github.com/stleary/JSON-java
-* org.json tests: https://github.com/stleary/JSON-Java-unit-test
+* `org.json` implementation: https://github.com/stleary/JSON-java
+* `org.json` tests: https://github.com/stleary/JSON-Java-unit-test
+
+
+## Open Issues
+
+* make diff of implementation classes to `org.json`
+* latest mockito-all version fails in one test
+
